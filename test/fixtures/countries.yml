@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  countryCode: MyString
+  region: MyString
+  incomeGroup: MyString
+  specialNotes: MyString
+
+two:
+  countryCode: MyString
+  region: MyString
+  incomeGroup: MyString
+  specialNotes: MyString
