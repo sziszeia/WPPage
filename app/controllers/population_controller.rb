@@ -28,9 +28,8 @@ class PopulationController < ApplicationController
             end
 
             # Once @country is known we need the associated population data and indicator
-            # @population = @populations.where(countryCode: @country.countryCode).take
-            # @indicator = @indicators.where(indicator_code: @population.indicator_code).take
-            @population = @populations.take
+            @population = @populations.where(countryCode: @country.countryCode).take
+            @indicator = @indicators.where(indicator_code: @population.indicatorCode).take
 
             # Get GDP per year for the selected country
             @annual_population = []
