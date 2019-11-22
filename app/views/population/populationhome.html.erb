@@ -1,4 +1,6 @@
 <h1>This is population home</h1>
+<%=@country.countryCode%><br />
+<%= @population.countryName%><br />
 <% @countries.each do |country|%>
     <%=country.countryCode%>
 <%end%>

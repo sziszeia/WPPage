@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_213113) do
+ActiveRecord::Schema.define(version: 2019_11_22_161255) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
@@ -80,6 +80,10 @@ ActiveRecord::Schema.define(version: 2019_11_21_213113) do
     t.decimal "Y2018"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "countryName"
+    t.string "countryCode"
+    t.string "indicatorName"
+    t.string "indicatorCode"
     t.index ["country_id"], name: "index_populations_on_country_id"
     t.index ["indicator_id"], name: "index_populations_on_indicator_id"
   end

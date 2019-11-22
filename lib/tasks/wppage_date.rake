@@ -64,10 +64,10 @@ namespace :wppage do
 
       # create new model instances
       u = Population.create!(
-        # CountryName: row[0],
-        # CountryCode: row[1],
-        # IndicatorName: row[2],
-        # IndicatorCode: row[3],
+        countryName: row[0],
+        countryCode: row[1],
+        indicatorName: row[2],
+        indicatorCode: row[3],
         Y2000: row[44],
         Y2001: row[45],
         Y2002: row[46],
