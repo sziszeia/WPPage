@@ -1,6 +1,105 @@
-<h1>This is population home</h1>
-<%=@country.countryCode%><br />
-<%= @population.countryName%><br />
-<% @countries.each do |country|%>
-    <%=country.countryCode%>
-<%end%>
+<div class="container-flex">
+    <h1>GDP</h1><hr />
+    <div class="m-5">
+        <%= render "countrySelectionForm"%>
+    </div>
+    <!-- Country 1 -->
+    <div class="row">  
+        <div class="col-xs-4">
+            <div class="card" style="width: 350px; height: 300px; overflow:auto;">
+                <div class="card-body">
+                    <h2>Country 1 details</h2><hr />
+                    <p><strong>Country Code:</strong> <%= @country1.countryCode %></p>
+                    <p><strong>Region:</strong> <%= @country1.region%></p>
+                    <p><strong>Income Group:</strong> <%= @country1.incomeGroup%></P>
+                    <p><strong>Special Notes:</strong> <%= @country1.specialNotes%></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="card" style="width: 350px; height: 300px; overflow: auto;">
+                <div class="card-body">
+                    <h2>Indicator details</h2><hr />
+                    <p><strong>Indicator Code:</strong> <%= @indicator1.indicator_code%></p>
+                    <p><strong>Indicator Name:</strong> <%= @indicator1.indicator_name%></p>
+                    <p><strong>Source Note:</strong> <%= @indicator1.source_note%></p>
+                </div>            
+            </div>
+        </div>     
+        <div class="col-xs-4">
+            <iframe width="300" height="300" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOfTYck0uRD8lQfauupsJgS_PLC5riwD4&q=<%=@population1.countryName%>"
+                allowfullscreen>
+            </iframe>
+        </div>  
+    <div>
+    <!-- Country 2 -->
+    <div class="row">  
+        <div class="col-xs-4">
+            <div class="card" style="width: 350px; height: 300px; overflow:auto;">
+                <div class="card-body">
+                    <h2>Country details</h2><hr />
+                    <p><strong>Country Code:</strong> <%= @country2.countryCode %></p>
+                    <p><strong>Region:</strong> <%= @country2.region%></p>
+                    <p><strong>Income Group:</strong> <%= @country2.incomeGroup%></P>
+                    <p><strong>Special Notes:</strong> <%= @country2.specialNotes%></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="card" style="width: 350px; height: 300px; overflow: auto;">
+                <div class="card-body">
+                    <h2>Indicator details</h2><hr />
+                    <p><strong>Indicator Code:</strong> <%= @indicator2.indicator_code%></p>
+                    <p><strong>Indicator Name:</strong> <%= @indicator2.indicator_name%></p>
+                    <p><strong>Source Note:</strong> <%= @indicator2.source_note%></p>
+                </div>            
+            </div>
+        </div>     
+        <div class="col-xs-4">
+            <iframe width="300" height="300" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOfTYck0uRD8lQfauupsJgS_PLC5riwD4&q=<%=@population2.countryName%>"
+                allowfullscreen>
+            </iframe>
+        </div>  
+    <div>
+    <!-- Comparison chart -->
+    <div class="card" style="width: 1000px; height: 600px;">
+        <div class="card-body">
+            <div id="container" style="width:100%;height:400px;"></div>
+        </div>
+    </div>
+</div>
+
+ 
+<script type="text/javascript">
+    $(function () {
+        var myChart = Highcharts.chart('container',{
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Population \n (Source: World Bank)'
+            },
+            xAxis: {
+                categories: <%=raw @years%>
+            },
+            yAxis: {
+                title: {
+                    text: 'Population'
+                }, 
+                label: {
+                    format: '{$value}'
+                },            
+                tickInterval: 1000,
+            },
+            series: [{
+                name: 'Population for ' + '<%=raw @country1.countryCode%>',
+                data: <%=raw @annual_population1 %>
+            },{
+                name: 'Population for ' + '<%=raw @country2.countryCode%>',
+                data: <%=raw @annual_population2 %>
+            }]
+        });
+    });
+</script>
