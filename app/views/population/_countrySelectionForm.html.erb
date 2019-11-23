@@ -1,0 +1,5 @@
+<%= form_tag population_path, method: :get do %>
+  <%= select_tag "SelectCountry1", options_for_select(@countries.collect{ |c| [c.countryCode, c.countryCode]})%>
+  <%= select_tag "SelectCountry2", options_for_select(@countries.collect{ |c| [c.countryCode, c.countryCode]})%>
+  <%= submit_tag "SelectCountry", class: "btn btn-secondary"%>
+<% end %>
