@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'population' => 'population#populationHome'
+  get 'home' => 'home#index'
 end
