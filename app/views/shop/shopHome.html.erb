@@ -1,0 +1,13 @@
+
+<%if @products%>
+    <% @products.each do |product|%>
+        <div class="card">
+            <div class="card-body">
+                <p><strong><%=product.name%></strong> -----  £<%=product.price%></p>
+                <p>product.description</p>
+            </div>
+        </div>
+    <%end%>
+<%else%>
+    <h2>Sorry, no products are available at the moment. Please check back later.</h2>
+<%end%>
