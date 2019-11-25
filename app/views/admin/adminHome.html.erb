@@ -2,20 +2,24 @@
 <!-- Products -->
 <div class="card m-4" style="background-color: #e9e9e9">
     <h3>Products management</h3><hr />
-    <a class="ml-2 btn btn-info" style="width: 10em" href="home">Add new</a>
+    <a class="ml-2 btn btn-info" style="width: 10em" href="newproduct">Add new</a>
     <div class="card-body">
         <% if @products && @products.size != 0%>
-            <% @products.each do |product|%>
-                <div class="card">
-                    <div class="card-body">
-                        <strong><%= product.name%></strong> -- <%= product.price%>
-                        <button class="btn">Edit</button>
-                        <button class="btn">Delete</button>
+            <div class="card" style="width: 50%; height: 20em; overflow:auto;">
+                <% @products.each do |product|%>
+                    <div class="card" style="width: 100%">
+                        <div class="card-body">
+                            <strong><%=product.id%> - </strong><strong><%= product.name%></strong> -- £<%= product.price%>
+                            <div class="float-right">
+                                <button class="btn btn-info">Edit</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            <% end %>
+                <% end %>
+            </div>
         <% else %>
-            <h3>No products have been advertised yet</h3>
+            <h3>No products have been advertised.</h3>
         <% end%>
     </div>
 </div>
@@ -23,18 +27,19 @@
 <!-- Products -->
 <div class="card m-4" style="background-color: #e9e9e9">
     <h3>User management</h3><hr />
-    <a class="ml-2 btn btn-info" style="width: 10em" href="home">Add new</a>
     <div class="card-body">
         <% if @users && @users.size != 0%>
-            <% @users.each do |user|%>
-                <div class="card">
-                    <div class="card-body">
-                        <strong><%= user.name%></strong>
-                        <button class="btn">Edit</button>
-                        <button class="btn">Delete</button>
+            <div class="card" style="width: 50%; height: 20em; overflow:auto;">
+                <% @users.each do |user|%>
+                    <div class="card">
+                        <div class="card-body">
+                            <strong><%= user.name%></strong>
+                            <button class="btn">Edit</button>
+                            <button class="btn">Delete</button>
+                        </div>
                     </div>
-                </div>
-            <% end %>
+                <% end %>
+            </div>
         <% else %>
             <h3>No users have been registered yet</h3>
         <% end%>

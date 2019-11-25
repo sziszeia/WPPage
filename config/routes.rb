@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   get 'shop' => 'shop#shopHome'
   get 'admin' => 'admin#adminHome'
   get 'about' => 'about#aboutHome'
+
+  # Admin routes
+
+  get 'newproduct' => 'admin#newProduct'
+  post 'createproduct' => 'admin#create'
 end

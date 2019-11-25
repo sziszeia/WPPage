@@ -1,0 +1,27 @@
+<%= form_for :product, url: createproduct_path do |f|%>
+    <% if @product.errors.any? %>
+        <% @product.errors.full_messages.each do |message|%>
+            <div class="alert alert-danger m-1">
+                <%= message %>
+            </div>
+        <% end %>
+    <% end %>
+    <p>
+        <%= f.label :name %><br />
+        <%= f.text_field(:name, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+        <%= f.label :description %><br />
+        <%= f.text_area(:description, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+        <%= f.label :price %><br />
+        <%= f.number_field(:price, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+        <%= f.submit({:class => 'btn btn-primary'})  %>
+    </p>
+<% end %>
