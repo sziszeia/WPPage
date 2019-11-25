@@ -9,7 +9,10 @@ class AdminController < ApplicationController
     end
 
     def create
-        @product = Product.new(post_params)
+        @product = Product.new(product_params)
+        @product.isNew = true
+        @product.isDiscounted = false
+
 
         respond_to do |format|
             if @product.save
@@ -22,7 +25,41 @@ class AdminController < ApplicationController
         end
     end
 
-    private def post_params
-        params.require(:product).permit(:name, :description, :price)
+    private def product_params
+        params.require(:product).permit(:name, :description, :price, :quantity)
     end
+
+    def deleteProduct
+        @currentProduct = Product.find(params[:id])
+
+        if @currentProduct
+            @currentProduct.destroy
+            respond_to do |format|
+              format.html { redirect_to action: 'adminHome', notice: 'Product was successfully destroyed.' }
+              format.json { head :no_content }
+            end
+        end
+    end
+
+    def editProduct
+        @product = Product.find(params[:id])
+    end
+
+    def updateProduct
+        @product = Product.find(params[:id])
+
+        @product.isNew = false;
+        
+        if @product
+            respond_to do |format|
+                if @product.update(product_params)
+                    format.html { redirect_to action: 'adminHome', notice: 'Product was successfully updated.' }
+                    format.json { render :show, status: :ok, location: @product }
+                else
+                    format.html { render :editProduct }
+                    format.json { render json: @product.errors, status: :unprocessable_entity }
+                end
+            end
+        end
+      end
 end

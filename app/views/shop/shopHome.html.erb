@@ -4,7 +4,11 @@
             <% @products.each do |product|%>
                 <div class="card m-1" style="width: 100%; background-color:#e9e9e9">
                     <div class="card-body">
-                        <p><strong><%=product.name%></strong> -----  £<%=product.price%></p>
+                        <%if product.isNew%>
+                            <div class="card float-right" style="background-color: yellow; width: 4em">NEW</div>
+                        <%end%>
+                        <p><strong><%=product.name%></strong>
+                            <div class="float-right"><strong>£<%=product.price%></strong></div></p>
                         <h6>Description</h6><hr />
                         <p><%=product.description%></p>
                     </div>
