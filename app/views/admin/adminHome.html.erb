@@ -11,8 +11,8 @@
                         <div class="card-body">
                             <strong><%=product.id%> - </strong><strong><%= product.name%></strong> -- £<%= product.price%>
                             <div class="float-right">
-                                <button class="btn btn-info">Edit</button>
-                                <button class="btn btn-danger">Delete</button>
+                                <%= link_to 'Edit', product_edit_path(product), :class => "btn btn-small btn-info", method: :post %>
+                                <%= link_to 'Delete', product_delete_path(product), :class => "btn btn-small btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete selected product?' } %>
                             </div>
                         </div>
                     </div>

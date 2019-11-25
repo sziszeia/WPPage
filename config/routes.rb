@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   get 'newproduct' => 'admin#newProduct'
   post 'createproduct' => 'admin#create'
+  delete "/deleteproduct/:id", to: "admin#deleteProduct", as: :product_delete
+  post "/editproduct/:id", to: "admin#editProduct", as: :product_edit
+  post "/updateproduct/:id", to: "admin#updateProduct", as: :product_update
 end
