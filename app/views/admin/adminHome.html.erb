@@ -1,0 +1,42 @@
+<h1>Admin Page</h1>
+<!-- Products -->
+<div class="card m-4" style="background-color: #e9e9e9">
+    <h3>Products management</h3><hr />
+    <a class="ml-2 btn btn-info" style="width: 10em" href="home">Add new</a>
+    <div class="card-body">
+        <% if @products && @products.size != 0%>
+            <% @products.each do |product|%>
+                <div class="card">
+                    <div class="card-body">
+                        <strong><%= product.name%></strong> -- <%= product.price%>
+                        <button class="btn">Edit</button>
+                        <button class="btn">Delete</button>
+                    </div>
+                </div>
+            <% end %>
+        <% else %>
+            <h3>No products have been advertised yet</h3>
+        <% end%>
+    </div>
+</div>
+
+<!-- Products -->
+<div class="card m-4" style="background-color: #e9e9e9">
+    <h3>User management</h3><hr />
+    <a class="ml-2 btn btn-info" style="width: 10em" href="home">Add new</a>
+    <div class="card-body">
+        <% if @users && @users.size != 0%>
+            <% @users.each do |user|%>
+                <div class="card">
+                    <div class="card-body">
+                        <strong><%= user.name%></strong>
+                        <button class="btn">Edit</button>
+                        <button class="btn">Delete</button>
+                    </div>
+                </div>
+            <% end %>
+        <% else %>
+            <h3>No users have been registered yet</h3>
+        <% end%>
+    </div>
+</div>

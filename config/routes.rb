@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get 'population' => 'population#populationHome'
   get 'home' => 'home#index'
   get 'shop' => 'shop#shopHome'
+  get 'admin' => 'admin#adminHome'
   get 'about' => 'about#aboutHome'
 end
