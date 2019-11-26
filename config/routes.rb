@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get 'newuser' => 'user#register'
   post "createuser" => 'user#createUser'
   delete "/deleteuser/:id", to: "user#deleteUser", as: :user_delete
+  post "/edituser/:id", to: "user#editUser", as: :user_edit
+  post "/updateuser/:id", to: "user#updateUser", as: :user_update
 end

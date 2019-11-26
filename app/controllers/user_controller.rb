@@ -9,7 +9,7 @@ class UserController < ApplicationController
 
         respond_to do |format|
             if @user.save
-              format.html { redirect_to home_url, notice: 'Product was successfully created.' }
+              format.html { redirect_to home_url, notice: 'User was successfully created.' }
               format.json { render :show, status: :created, location: @user }
             else
               format.html { render :register }
@@ -28,9 +28,29 @@ class UserController < ApplicationController
         if @deletedUser
             @deletedUser.destroy
             respond_to do |format|
-              format.html { redirect_to admin_url, notice: 'Product was successfully destroyed.' }
+              format.html { redirect_to admin_url, notice: 'User was successfully destroyed.' }
               format.json { head :no_content }
             end
         end
     end
+
+    def editUser
+        @user = User.find(params[:id])
+    end
+
+    def updateUser
+        @user = User.find(params[:id])
+        
+        if @user
+            respond_to do |format|
+                if @user.update(user_params)
+                    format.html { redirect_to admin_url, notice: 'User was successfully updated.' }
+                    format.json { render :show, status: :ok, location: @user }
+                else
+                    format.html { render :editUser }
+                    format.json { render json: @user.errors, status: :unprocessable_entity }
+                end
+            end
+        end
+      end
 end
