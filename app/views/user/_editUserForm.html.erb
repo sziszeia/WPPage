@@ -1,0 +1,22 @@
+<%= form_for :user, url: user_update_path do |f|%>
+    <% if @user.errors.any? %>
+        <% @user.errors.full_messages.each do |message|%>
+            <div class="alert alert-danger m-1">
+                <%= message %>
+            </div>
+        <% end %>
+    <% end %>
+    <p>
+        <%= f.label :userName %><br />
+        <%= f.text_field(:userName, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+        <%= f.label :password %><br />
+        <%= f.text_field(:password, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+        <%= f.submit({:class => 'btn btn-primary'})  %>
+    </p>
+<% end %>
