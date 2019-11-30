@@ -9,8 +9,12 @@ class UserController < ApplicationController
 
         respond_to do |format|
             if @user.save
-              format.html { redirect_to home_url, notice: 'User was successfully created.' }
-              format.json { render :show, status: :created, location: @user }
+                @cart = Cart.new(user_id: @user.id)
+                @cart.isCompleted = false
+                @cart.save!
+                format.html { redirect_to home_url, notice: 'User was successfully created.' }
+                format.json { render :show, status: :created, location: @user }
+              
             else
               format.html { render :register }
               format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -24,8 +28,10 @@ class UserController < ApplicationController
 
     def deleteUser
         @deletedUser = User.find(params[:id])
+        @cartToDelete = Cart.find(user_id = @deletedUser.id)
 
         if @deletedUser
+            @cartToDelete.destroy
             @deletedUser.destroy
             respond_to do |format|
               format.html { redirect_to admin_url, notice: 'User was successfully destroyed.' }

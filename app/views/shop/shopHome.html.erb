@@ -7,6 +7,9 @@
                         <%if product.isNew%>
                             <div class="card float-right" style="background-color: yellow; width: 4em">NEW</div>
                         <%end%>
+                        <%if product.quantity == 0 %>
+                            <div class="card float-right" style="background-color: red; width: 6em">Out of stock </div>
+                        <% end %>
                         <p><strong><%=product.name%></strong>
                             <div class="float-right"><strong>£<%=product.price%></strong></div></p>
                         <h6>Description</h6><hr />
