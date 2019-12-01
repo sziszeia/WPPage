@@ -9,6 +9,10 @@
                         <%end%>
                         <%if product.quantity == 0 %>
                             <div class="card float-right" style="background-color: red; width: 6em">Out of stock </div>
+                        <% else %>
+                            <div class="float-right">
+                                <%= link_to 'Add to cart', add_to_cart_path(product), :class => "btn btn-small btn-info", method: :post %>
+                            </div>
                         <% end %>
                         <p><strong><%=product.name%></strong>
                             <div class="float-right"><strong>£<%=product.price%></strong></div></p>
