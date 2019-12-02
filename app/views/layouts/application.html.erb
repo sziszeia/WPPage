@@ -22,24 +22,36 @@
           <li class="nav-item active">
             <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="population">Population</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="shop">Shop</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin">Admin</a>
-          </li>
+          <% if session[:user_id]%>
+            <li class="nav-item">
+              <a class="nav-link" href="population">Population</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shop">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin">Admin</a>
+            </li>
+          <% end %>
           <li class="nav-item">
             <a class="nav-link" href="about">About</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-md-0">
-          <input class="form-control m-1" type="text" placeholder="username">
-          <input class="form-control m-1" type="password" placeholder="password">
-          <input class="btn btn-primary" type="submit">
-        </form>
+        <% if session[:user_id] %>
+          <span style="color: white">Welcome <%= User.find(session[:user_id]).userName%></span>
+          <%= link_to 'Log out', user_log_out_path, :class => "btn btn-info ml-2", method: :post %>
+        <% else %>
+          <%= form_tag user_log_in_path, :class => "form-inline" do %>
+              <%= session[:user_id]%>
+              <%= text_field_tag :userName, params[:userName], class: 'form-control m-1', placeholder: "username" %>
+
+              <%= password_field_tag :password_digest, params[:password_digest], class: 'form-control m-1', placeholder: "password" %>
+
+              <%= submit_tag "Login", class: 'btn btn-primary' %>
+
+          <% end %>
+        <% end %>
+
       </div>
     </nav>
     <div class="container-flex m-5">
