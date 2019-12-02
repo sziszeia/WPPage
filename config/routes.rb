@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   # Shop routes
 
   post '/addtocart/:id', to:"shop#addToCart", as: :add_to_cart
+  get '/shop/cart', to:"cart#cartHome", as: :cart_home
 end
