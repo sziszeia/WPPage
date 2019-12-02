@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
     include UserHelper
-    # before_action :admin?
+    before_action :admin?
 
     def adminHome
         @users = User.all
