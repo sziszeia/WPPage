@@ -95,5 +95,12 @@ namespace :wppage do
       puts u.valid?
       puts u.errors.messages
     end
+
+          # create an admin user
+          User.create!(
+            userName: "admin",
+            password_digest: "password",
+            userType: "admin"
+          )
   end
 end
