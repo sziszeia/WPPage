@@ -35,14 +35,18 @@
             <a class="nav-link" href="about">About</a>
           </li>
         </ul>
-        <%= form_tag  user_log_in_path(@user), :class => "form-inline" do %>
+        <% if session[:user_id] %>
+          <%= link_to 'Log out', user_log_out_path, :class => "btn btn-info", method: :post %>
+        <% else %>
+          <%= form_tag user_log_in_path, :class => "form-inline" do %>
+              <%= session[:user_id]%>
+              <%= text_field_tag :userName, params[:userName], class: 'form-control m-1', placeholder: "username" %>
 
-            <%= text_field_tag :userName, params[:userName], class: 'form-control m-1', placeholder: "username" %>
+              <%= password_field_tag :password_digest, params[:password_digest], class: 'form-control m-1', placeholder: "password" %>
 
-            <%= password_field_tag :password_digest, params[:password_digest], class: 'form-control m-1', placeholder: "password" %>
+              <%= submit_tag "Login", class: 'btn btn-primary' %>
 
-            <%= submit_tag "Login", class: 'btn btn-primary' %>
-
+          <% end %>
         <% end %>
 
       </div>

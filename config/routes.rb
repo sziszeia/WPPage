@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post "/edituser/:id", to: "user#editUser", as: :user_edit
   post "/updateuser/:id", to: "user#updateUser", as: :user_update
   post "/login", to: 'user#logIn', as: :user_log_in
+  post "/logout", to: 'user#logOut', as: :user_log_out
 
   # Shop routes
 
