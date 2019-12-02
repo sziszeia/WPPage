@@ -22,21 +22,24 @@
           <li class="nav-item active">
             <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="population">Population</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="shop">Shop</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin">Admin</a>
-          </li>
+          <% if session[:user_id]%>
+            <li class="nav-item">
+              <a class="nav-link" href="population">Population</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shop">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin">Admin</a>
+            </li>
+          <% end %>
           <li class="nav-item">
             <a class="nav-link" href="about">About</a>
           </li>
         </ul>
         <% if session[:user_id] %>
-          <%= link_to 'Log out', user_log_out_path, :class => "btn btn-info", method: :post %>
+          <span style="color: white">Welcome <%= User.find(session[:user_id]).userName%></span>
+          <%= link_to 'Log out', user_log_out_path, :class => "btn btn-info ml-2", method: :post %>
         <% else %>
           <%= form_tag user_log_in_path, :class => "form-inline" do %>
               <%= session[:user_id]%>
