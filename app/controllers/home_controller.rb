@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
     include UserHelper
+    skip_before_action :logged_in?
     def index
-        @userid = session[:user_id]
     end
 end

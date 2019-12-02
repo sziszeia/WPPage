@@ -1,6 +1,7 @@
 class UserController < ApplicationController
     protect_from_forgery with: :exception
     include UserHelper
+    skip_before_action :logged_in?, only: [:register, :createUser, :logIn, :logged_in]
 
     def logIn
         user = User.find_by(userName: params[:userName])
@@ -22,7 +23,7 @@ class UserController < ApplicationController
         begin
             logged_in
         rescue => exception
-            redirect_to home_url, notice: "Could not find logged in user!"
+            redirect_to home_url, notice: "Could not find logged in user"
         end
     end
 
@@ -61,7 +62,7 @@ class UserController < ApplicationController
     end
 
     private def user_params
-        params.require(:user).permit(:userName, :password_digest, :password_confirmation)
+        params.require(:user).permit(:userName, :password_digest, :password_confirmation, :userType)
     end
 
     def deleteUser
