@@ -13,8 +13,16 @@ module UserHelper
         end
     end
 
-    def logged_in
-        !current_user.nil?
+    def logged_in?
+        unless User.find_by(id: session[:user_id])
+            redirect_to home_url, notice:"Please log in"
+        end
+    end
+
+    def admin?
+        unless User.find_by(id: session[:user_id]).userType == "admin"
+            redirect_to home_url, notice:"Restricted area"
+        end
     end
 
     def log_out

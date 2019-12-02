@@ -17,6 +17,10 @@
     </p>
 
     <p>
+        <%= f.label :userType %><br />
+        <%= f.select :userType, options_for_select(['admin', 'user']), {:class => 'form-control'}%>
+    </p>
+    <p>
         <%= f.submit({:class => 'btn btn-primary'})  %>
     </p>
 <% end %>
