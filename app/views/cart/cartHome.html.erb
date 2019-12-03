@@ -1,10 +1,11 @@
+<h2>Your shopping cart</h2>
 <div class="container-flex">
 <p id=”notice” class=""><span style="color: green"><%= notice %></p></span>
     <%if @cart_items && @cart_items.size != 0%>
-        <div class="card justify-content-cener" style="width: 50%; height: 50em; overflow:auto;">
+        <div class="card justify-content-cener" style="width: 50%; height: 30em; overflow:auto;">
             <% @cart_items.each do |cart_item|%>
                 <% product = Product.find_by(id: cart_item.product_id)%>
-                <div class="card m-1" style="width: 100%; background-color:#e9e9e9">
+                <div class="card m-1" style="width: 95%; background-color:#e9e9e9">
                     <div class="card-body">
                         <div class="float-right">
                             <%= link_to 'Remove from cart', cart_item_remove_path(product), :class => "btn btn-small btn-danger", method: :delete %>
@@ -21,3 +22,6 @@
         <h2>No products are in your cart at the moment.</h2>
     <%end%>
 </div>
+<%if @cart_items && @cart_items.size != 0%>
+    <%= link_to 'Proceed', order_home_path(), :class => "btn btn-small btn-info m-2", method: :get %>
+<% end %>

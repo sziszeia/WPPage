@@ -1,0 +1,28 @@
+<div class="container">
+<p id=”notice” class=""><span style="color: green"><%= notice %></p></span>
+
+    <div style="width: 50%">
+    <h1>Payment</h1>
+        <p>Please enter payment card details. Please ensure all details are correct to avoid delay in your order.</p>
+        <%= form_for :order, url: complete_order_path do |f|%>
+            <p>
+                <%= f.label :cardNumber %><br />
+                <%= f.number_field(:name, {:class => 'form-control'}) %>
+            </p>
+
+            <p>
+                <%= f.label :expiry %><br />
+                <%= f.date_field(:expiry, {:class => 'form-control'}) %>
+            </p>
+
+            <p>
+                <%= f.label :cvv %><br />
+                <%= f.number_field(:cvv, {:class => 'form-control'}) %>
+            </p>
+
+            <p>
+                <%= f.submit ({:class => 'btn btn-success'})  %>
+            </p>
+        <% end %>
+    </div>
+</div>

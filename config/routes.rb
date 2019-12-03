@@ -33,4 +33,9 @@ Rails.application.routes.draw do
   get '/shop/cart', to:"cart#cartHome", as: :cart_home
   delete '/deletecartitem/:id', to: 'cart#removeFromCart', as: :cart_item_remove
 
+  # Order routes
+  get 'shop/cart/order', to:'order#orderHome', as: :order_home
+  post 'shop/cart/completeorder', to:'order#completeOrder', as: :complete_order
+  get 'shop/cart/order/confirmation', to:'order#confirmation', as: :order_confirmation
+
 end
