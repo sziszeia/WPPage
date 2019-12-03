@@ -5,6 +5,7 @@ class AdminController < ApplicationController
     def adminHome
         @users = User.all
         @products = Product.all
+        @orders = Order.all
     end
 
     def newProduct

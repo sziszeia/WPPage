@@ -24,7 +24,7 @@
     </div>
 </div>
 
-<!-- Products -->
+<!-- Users -->
 <div class="card m-4" style="background-color: #e9e9e9">
     <h3>User management</h3><hr />
     <div class="card-body">
@@ -44,6 +44,32 @@
             </div>
         <% else %>
             <h3>No users have been registered yet</h3>
+        <% end%>
+    </div>
+</div>
+
+<!-- Orders -->
+<div class="card m-4" style="background-color: #e9e9e9">
+    <h3>Orders management</h3><hr />
+    <div class="card-body">
+        <% if @orders && @orders.size != 0%>
+            <div class="card" style="width: 50%; height: 20em; overflow:auto;">
+                <% @orders.each do |order|%>
+                    <div class="card" style="width: 100%">
+                        <div class="card-body">
+                            <strong>Id: <%=order.id%> - </strong><strong>Ordered on: <%= order.created_at%></strong>
+                            <p>Ordered by: <%=@users.find(order.user_id).userName%>
+                            <p>Complete?: <%=order.isComplete%></p>
+                            <p>Status: <%=order.status%></p>
+                            <div class="float-right">
+                                <%= link_to 'Complete', admin_complete_path(order), :class => "btn btn-small btn-info", method: :post %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% else %>
+            <h3>There are no incomplete orders.</h3>
         <% end%>
     </div>
 </div>

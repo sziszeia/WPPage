@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/population' => 'population#populationHome'
   get '/home' => 'home#index'
   get '/shop' => 'shop#shopHome'
-  get '/admin' => 'admin#adminHome'
+  get '/admin' => 'admin#adminHome', as: :admin_home
   get '/about' => 'about#aboutHome'
 
   # Admin routes
@@ -37,5 +37,6 @@ Rails.application.routes.draw do
   get 'shop/cart/order', to:'order#orderHome', as: :order_home
   post 'shop/cart/completeorder', to:'order#completeOrder', as: :complete_order
   get 'shop/cart/order/confirmation', to:'order#confirmation', as: :order_confirmation
+  post 'shop/cart/order/admincomplete/:id', to:'order#adminComplete', as: :admin_complete
 
 end

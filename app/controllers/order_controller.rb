@@ -10,6 +10,9 @@ class OrderController < ApplicationController
 
         if @cart && @cart_items
             order = Order.new(user_id: @user.id)
+            order.isComplete = false
+            order.status = "Processing"
+            order.save
 
             @cart_items.each do |cart_item|
                 product = Product.find_by(id: cart_item.product_id)
@@ -32,5 +35,21 @@ class OrderController < ApplicationController
     def confirmation
         @user = User.find(session[:user_id])
         @order = Order.find_by(user_id:@user.id)
+    end
+
+    def adminComplete
+        @order = Order.find(params[:id])
+        @order.isComplete = true
+        @order.status = "Complete"
+
+        respond_to do |format|
+            if @order.save
+                format.html { redirect_to admin_home_url, notice: 'Order completed successfully.' }
+                format.json { render :orderHome, status: :created }
+            else
+                format.html { render :orderHome }
+                format.json { render json: @order.errors, status: :unprocessable_entity }
+            end
+        end
     end
 end
