@@ -25,7 +25,7 @@ class ShopController < ApplicationController
                 if @cart_item.save
                     @product.quantity -= 1
                     @product.save
-                    format.html { redirect_to action: 'shopHome', notice: 'Product was successfully added to cart.' }
+                    format.html { redirect_to shop_home_url, notice: 'Product was successfully added to cart.' }
                     format.json { render :show, status: :created, location: @product }
                 else
                     format.html { render :shopHome }
