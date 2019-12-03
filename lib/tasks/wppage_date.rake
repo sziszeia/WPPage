@@ -97,10 +97,14 @@ namespace :wppage do
     end
 
           # create an admin user
-          User.create!(
+          user = User.create!(
             userName: "admin",
             password_digest: "password",
             userType: "admin"
+          )
+
+          Cart.create!(
+            user_id: user.id
           )
   end
 end

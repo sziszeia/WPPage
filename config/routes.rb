@@ -29,5 +29,8 @@ Rails.application.routes.draw do
   # Shop routes
 
   post '/addtocart/:id', to:"shop#addToCart", as: :add_to_cart
+  get '/shop', to:'shop#shopHome', as: :shop_home
   get '/shop/cart', to:"cart#cartHome", as: :cart_home
+  delete '/deletecartitem/:id', to: 'cart#removeFromCart', as: :cart_item_remove
+
 end

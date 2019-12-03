@@ -20,23 +20,23 @@
       <div class="collapse navbar-collapse" id="navbarsExample03">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
           </li>
           <% if session[:user_id]%>
             <li class="nav-item">
-              <a class="nav-link" href="population">Population</a>
+              <a class="nav-link" href="/population">Population</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="shop">Shop</a>
+              <a class="nav-link" href="/shop">Shop</a>
             </li>
             <% if User.find(session[:user_id]).userType == "admin"%>
               <li class="nav-item">
-                <a class="nav-link" href="admin">Admin</a>
+                <a class="nav-link" href="/admin">Admin</a>
               </li>
             <% end %>
           <% end %>
           <li class="nav-item">
-            <a class="nav-link" href="about">About</a>
+            <a class="nav-link" href="/about">About</a>
           </li>
         </ul>
         <% if session[:user_id] %>

@@ -1,4 +1,5 @@
 <div class="container-flex">
+<p id=”notice” class=""><span style="color: green"><%= notice %></p></span>
     <%if @cart_items.size > 0%>
         <div class="card justify-content-cener m-2" style="background-color: #d9ffb3; width: 50%; height: auto;">
             <p>You have <%=@cart_items.size%> items in your cart for £<%=@total%>. <span class="float-right"><a class="btn btn-info m-2" href="/shop/cart">Go to cart</a></span></p>
@@ -23,7 +24,7 @@
                             <div class="float-right"><strong>£<%=product.price%></strong></div></p>
                         <h6>Description</h6><hr />
                         <p><%=product.description%></p>
-                        <%=product.quantity%>
+                        <p><%=product.quantity%> remaining</p>
                     </div>
                 </div>
             <%end%>
