@@ -1,5 +1,7 @@
 <div class="container-flex">
 <p id=”notice” class=""><span style="color: green"><%= notice %></p></span>
+<p>This is the shop area. Please check back regularly as we have a quick stock turn around</p>
+<p>Our stock and products regulary update so do not miss out on good deals! Also help us raise money for good cause</p>
     <%if @cart_items.size > 0%>
         <div class="card justify-content-cener m-2" style="background-color: #d9ffb3; width: 50%; height: auto;">
             <p>You have <%=@cart_items.size%> items in your cart for £<%=@total%>. <span class="float-right"><a class="btn btn-info m-2" href="/shop/cart">Go to cart</a></span></p>
