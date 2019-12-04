@@ -68,9 +68,16 @@
                             <p>Ordered by: <%=@users.find(order.user_id).userName%>
                             <p>Complete?: <%=order.isComplete%></p>
                             <p>Status: <%=order.status%></p>
-                            <div class="float-right">
+                            <%if order.status == "Dispatched"%>
+                                <div class="float-right">
                                 <%= link_to 'Complete', admin_complete_path(order), :class => "btn btn-small btn-info", method: :post %>
                             </div>
+                            <% end %>
+                            <%if order.status != "Dispatched" && order.status != "Complete"%>
+                            <div class="float-right">
+                                <%= link_to 'Dispatch', admin_dispatch_path(order), :class => "btn btn-small btn-info", method: :post %>
+                            </div>
+                            <% end %>
                         </div>
                     </div>
                 <% end %>

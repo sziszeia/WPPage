@@ -52,4 +52,19 @@ class OrderController < ApplicationController
             end
         end
     end
+
+    def adminDispatch
+        @order = Order.find(params[:id])
+        @order.status = "Dispatched"
+
+        respond_to do |format|
+            if @order.save
+                format.html { redirect_to admin_home_url, notice: 'Order updated successfully.' }
+                format.json { render :orderHome, status: :created }
+            else
+                format.html { render :orderHome }
+                format.json { render json: @order.errors, status: :unprocessable_entity }
+            end
+        end
+    end
 end
