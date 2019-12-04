@@ -38,5 +38,6 @@ Rails.application.routes.draw do
   post 'shop/cart/completeorder', to:'order#completeOrder', as: :complete_order
   get 'shop/cart/order/confirmation', to:'order#confirmation', as: :order_confirmation
   post 'shop/cart/order/admincomplete/:id', to:'order#adminComplete', as: :admin_complete
+  post 'shop/cart/order/admindispatch/:id', to:'order#adminDispatch', as: :admin_dispatch
 
 end
