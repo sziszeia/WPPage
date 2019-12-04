@@ -3,7 +3,7 @@ class AdminController < ApplicationController
     before_action :admin?
 
     def adminHome
-        @users = User.all.order('LOWER(userName) ASC')
+        @users = User.all #.order('LOWER(userName) ASC')
         @products = Product.all
 
         if params[:selectedUser].blank?
