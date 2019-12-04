@@ -3,9 +3,15 @@ class AdminController < ApplicationController
     before_action :admin?
 
     def adminHome
-        @users = User.all
+        @users = User.all.order('LOWER(userName) ASC')
         @products = Product.all
-        @orders = Order.all
+
+        if params[:selectedUser].blank?
+            @orders = Order.all
+        else
+            selectedUser = @users.where(userName: params[:selectedUser]).take
+            @orders = (Order.where(user_id: selectedUser.id))
+        end
     end
 
     def newProduct
