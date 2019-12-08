@@ -1,24 +1,23 @@
-# README
+# README for the WpPage app
+Ruby 2.4.1  Rails 5.2.3
+A live version is deployed on Heroku, and can be accessed using the following link:
+https://wppage.herokuapp.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+admin: username: "admin", password: "password"
 
-Things you may want to cover:
+## running the application locally ##
+Run bundle install If the sqlite3 database isn't already present, then seed the database using:
+rake wppage:seed_data
 
-* Ruby version
+## tests can be run using rspec command in cli
 
-* System dependencies
+Access the application using:http://localhost:3000
+<p>Group Members:</p>
+Szilvia Horvath (51982068)
 
-* Configuration
 
-* Database creation
+## These are the parts that are not working correctly ##
 
-* Database initialization
+We tried to integrate <x> by doing <w>
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This didn't work, so we commented it out so that you could see the code.
