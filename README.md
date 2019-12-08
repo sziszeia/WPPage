@@ -9,10 +9,12 @@ admin: username: "admin", password: "password"
 Run bundle install If the sqlite3 database isn't already present, then seed the database using:
 rake wppage:seed_data
 
-## tests can be run using rspec command in cli
-
 Access the application using:http://localhost:3000
-<p>Group Members:</p>
+
+## running tests
+tests can be run using rspec command in cli
+
+## Group Members:
 Szilvia Horvath (51982068)
 
 
