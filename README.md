@@ -4,7 +4,7 @@ A live version is deployed on Heroku, and can be accessed using the following li
 https://wppage.herokuapp.com/
 
 admin: username: "admin", password: "password"
-user: username: "bobby", password:"password"
+user: username: "Bobby", password:"password" (please ensure capitalisation)
 
 ## running the application locally ##
 Run bundle install If the sqlite3 database isn't already present, then seed the database using:
