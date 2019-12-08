@@ -3,8 +3,8 @@ Ruby 2.4.1  Rails 5.2.3
 A live version is deployed on Heroku, and can be accessed using the following link:
 https://wppage.herokuapp.com/
 
-admin: username: "admin", password: "password"
-user: username: "Bobby", password:"password" (please ensure capitalisation)
+<p>admin: username: "admin", password: "password"</p>
+<p>user: username: "Bobby", password:"password" (please ensure capitalisation)</p>
 
 ## running the application locally ##
 Run bundle install If the sqlite3 database isn't already present, then seed the database using:
